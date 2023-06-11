@@ -6,7 +6,7 @@ import { RiAccountPinCircleLine, RiArrowDropDownFill } from "react-icons/ri";
 import UserMenu from "./UserMenu";
 import styles from "./header.module.scss";
 
-const Top = () => {
+const Top = ({ country }) => {
     const [loggedIn, setLoggedIn] = useState(true);
     const [visible, setVisible] = useState(false);
     return (
@@ -15,8 +15,8 @@ const Top = () => {
                 <div></div>
                 <ul className={styles.top__list}>
                     <li className={styles.li}>
-                        <img src="https://www.seekpng.com/png/full/250-2502963_indian-flag-images-for-whatsapp-ashoka-chakra-indian.png" alt="" />
-                        <span>India/INR</span>
+                        <img src={country.flag} alt="" />
+                        <span>{country.name}/{country.currency}</span>
                     </li>
                     <li className={styles.li}>
                         <MdSecurity />
