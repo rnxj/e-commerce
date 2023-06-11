@@ -1,3 +1,4 @@
+import Footer from '@/components/footer'
 import Header from '@/components/header'
 import { Inter } from 'next/font/google'
 
@@ -7,9 +8,7 @@ export default function Home() {
   return (
     <main>
       <Header />
-      <div>
-        Hello World!!!
-      </div>
+      <Footer />
     </main>
   )
 }
