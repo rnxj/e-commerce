@@ -15,16 +15,16 @@ export default function Home({ country }) {
 }
 
 export async function getServerSideProps() {
-  let data = await axios
-    .get("https://api.ipregistry.co/?key=e5g5adq20r7rkr9o")
-    .then((res) => {
-      let result = res.data.location.country;
-      result["currency"] = res.data.currency.code;
-      return result;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // let data = await axios
+  //   .get(`https://api.ipregistry.co/?key=${process.env.IPREGISTRY_API_KEY}`)
+  //   .then((res) => {
+  //     let result = res.data.location.country;
+  //     result["currency"] = res.data.currency.code;
+  //     return result;
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
   return {
     props: {
       // country: { name: data.name, flag: data.flag.emojitwo, currency: data.currency },
