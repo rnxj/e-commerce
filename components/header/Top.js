@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import { BsSuitHeart } from "react-icons/bs";
@@ -7,7 +8,7 @@ import UserMenu from "./UserMenu";
 import styles from "./header.module.scss";
 
 const Top = ({ country }) => {
-    const [loggedIn, setLoggedIn] = useState(true);
+    const { data: session } = useSession();
     const [visible, setVisible] = useState(false);
     return (
         <div className={styles.top}>
@@ -39,11 +40,11 @@ const Top = ({ country }) => {
                         onMouseOver={() => setVisible(true)}
                         onMouseLeave={() => setVisible(false)}
                     >
-                        {loggedIn ? (
+                        {session ? (
                             <li className={styles.li}>
                                 <div className={styles.flex}>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png?w=1480&t=st%3D1686511185~exp%3D1686511785~hmac%3Dd49ec9c8b68b72d0584c2eb8b0a6b6bc455e1aa40591570e25a37c6bdd963c66" alt="" />
-                                    <span>Nixon</span>
+                                    <img src={session.user.image} alt="" />
+                                    <span>{session.user.name}</span>
                                     <RiArrowDropDownFill />
                                 </div>
                             </li>
@@ -56,7 +57,7 @@ const Top = ({ country }) => {
                                 </div>
                             </li>
                         )}
-                        {visible && <UserMenu loggedIn={loggedIn} />}
+                        {visible && <UserMenu session={session} />}
                     </li>
                 </ul>
             </div>
