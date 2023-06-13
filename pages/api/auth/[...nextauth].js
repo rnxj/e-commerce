@@ -9,7 +9,7 @@ import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from 'next-auth/providers/google'
 import clientPromise from './lib/mongodb'
 
-db.connectDb()
+await db.connectDb()
 
 export default NextAuth({
     adapter: MongoDBAdapter(clientPromise),
