@@ -4,7 +4,7 @@ const connection = {
 	isConnected: 0,
 };
 
-const connectDB = async () => {
+const connectDb = async () => {
 	if (connection.isConnected) {
 		console.log("Already connected to DB");
 		return;
@@ -24,7 +24,7 @@ const connectDB = async () => {
 	connection.isConnected = db.connections[0].readyState;
 };
 
-const disconnectDB = async () => {
+const disconnectDb = async () => {
 	if (process.env.NODE_ENV === "production") {
 		await mongoose.disconnect();
 		connection.isConnected = 0;
@@ -33,5 +33,5 @@ const disconnectDB = async () => {
 	}
 };
 
-const db = { connectDB, disconnectDB };
+const db = { connectDb, disconnectDb };
 export default db;
