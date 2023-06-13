@@ -9,7 +9,6 @@ import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from 'next-auth/providers/google'
 import clientPromise from './lib/mongodb'
 
-await db.connectDb()
 
 export default NextAuth({
     adapter: MongoDBAdapter(clientPromise),
@@ -73,6 +72,7 @@ export default NextAuth({
 })
 
 const SignInUser = async ({ user, password }) => {
+    await db.connectDb()
     if (!user.password) {
         throw new Error("Please enter your password.");
     }
