@@ -19,7 +19,10 @@ const connectDb = async () => {
 		await mongoose.disconnect();
 	}
 
-	const db = await mongoose.connect(process.env.MONGODB_URL);
+	const db = await mongoose.connect(process.env.MONGODB_URL, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	});
 	console.log("New connection to DB");
 	connection.isConnected = db.connections[0].readyState;
 };
